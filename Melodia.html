@@ -1,0 +1,6 @@
+<div id="Reproductor"><audio controls="controls" autoplay="autoplay" style="width:300px" id="audio" src="http://i60.letio.com/7000.aac"></audio>
+<script>
+  var audio = document.getElementById('audio');
+  if(Hls.isSupported()) {    var hls = new Hls();    hls.loadSource('https://master.letio.com/io/?gs=7000&gsm=7000&type=audio.m3u8');    hls.attachMedia(audio);    hls.on(Hls.Events.MANIFEST_PARSED,function() {     audio.play();  });
+ }else if (audio.canPlayType('application/vnd.apple.mpegurl')) {    audio.src = 'https://master.letio.com/io/?gs=7000&gsm=7000&type=audio.m3u8';    audio.addEventListener('loadedmetadata',function() {      audio.play();    });  }
+</script></div>
